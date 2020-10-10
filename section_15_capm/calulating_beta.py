@@ -29,3 +29,7 @@ print(f"PG Beta: {PG_beta}")
 # risk-free rate = 2.5%, risk premium = 5%
 PG_er = 0.025 + PG_beta * 0.05
 print(f"Expected Return: {PG_er}")
+
+# calculate the sharpe ratio
+sharpe = (PG_er - 0.025) / (sec_returns['PG'].std() * 250 ** 0.5)
+print(f"Sharpe Ratio: {sharpe}")
