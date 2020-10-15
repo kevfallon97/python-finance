@@ -4,16 +4,19 @@ from pandas_datareader import data as wb
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 
+# retirieve data
 ticker = 'PG'
 data = pd.DataFrame()
 data[ticker] = wb.DataReader(ticker, data_source='yahoo', start='2007-1-1')['Adj Close']
 
+# calculate required values
 log_returns = np.log(1 + data.pct_change())
 u = log_returns.mean()
 var = log_returns.var()
 drift = u - (0.5 * var)
 stdev = log_returns.std()
 
+# specify array dimensions
 t_intervals = 1000
 iterations = 10
 
